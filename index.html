@@ -1,8 +1,153 @@
-<html>
-	<head>
+<!doctype html>
+<html lang="en">
 
-	</head>
-	<body>
-		
-	</body>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="Nguyen Tu">
+	<link href="./dist/css/home-page.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Assignment 1</title>
+</head>
+
+<body>
+	<div class="navbar" id="myTopnav">
+		<div class="dropdown">
+			<button class="dropbtn">
+				<i class="fa fa-plus" aria-hidden="true"></i>
+				New
+				<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="#">Link 1</a>
+				<a href="#">Link 2</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<i class="fa fa-upload" aria-hidden="true"></i>
+				Upload
+				<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="#">Link 1</a>
+				<a href="#">Link 2</a>
+			</div>
+		</div>
+		<a href="#">
+			<i class="fa fa-refresh" aria-hidden="true"></i>
+			Sync
+		</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<i class="fa fa-plus" aria-hidden="true"></i>
+				Flow
+				<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="#">Link 1</a>
+				<a href="#">Link 2</a>
+			</div>
+		</div>
+		<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+	</div>
+	<div class="container">
+		<div>
+			<h1 class="documents-header">Documents</h2>
+		</div>
+		<div class="table-documents">
+			<table class="table">
+				<thead class="table-head">
+					<tr>
+						<th>
+							<div class="container">
+								<input type="checkbox">
+							</div>
+						</th>
+						<th style="text-align: center;">
+							<i class="fa fa-file-o" aria-hidden="true"></i>
+						</th>
+						<th>Name</th>
+						<th>Modified</th>
+						<th>Modified by</th>
+						<th>Add column</th>
+					</tr>
+				</thead>
+				<tbody class="table-body">
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td><i class="file-icon fa fa-folder-o"></i></td>
+						<td>CAS</td>
+						<td>April 30</td>
+						<td>Megan Owen</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>
+							<i class="file-icon fa fa-file-excel-o" aria-hidden="true"></i>
+						</td>
+						<td>CoastedAndBargeLoading</td>
+						<td>A few second ago</td>
+						<td>Administrator MOD</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>
+							<i class="file-icon fa fa-file-excel-o" aria-hidden="true"></i>
+						</td>
+						<td>RevenueByServices</td>
+						<td>A few second ago</td>
+						<td>Administrator MOD</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>
+							<i class="file-icon fa fa-file-excel-o" aria-hidden="true"></i>
+						</td>
+						<td>RevenueByServices2016</td>
+						<td>A few second ago</td>
+						<td>Administrator MOD</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>
+							<i class="file-icon fa fa-file-excel-o" aria-hidden="true"></i>
+						</td>
+						<td>RevenueByServices2017</td>
+						<td>A few second ago</td>
+						<td>Administrator MOD</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script>
+		function myFunction() {
+			var x = document.getElementById("myTopnav");
+			if (x.className === "navbar") {
+				x.className += " responsive";
+			} else {
+				x.className = "navbar";
+			}
+		}
+	</script>
+</body>
+
 </html>

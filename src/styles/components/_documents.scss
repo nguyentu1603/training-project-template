@@ -1,0 +1,72 @@
+.documents-header {
+    font-size: 40px;
+    padding: 20px;
+    font-weight: 300;
+    font-family: $font-family-sans-serif;
+}
+
+.table-documents {
+    font-family: $font-family-sans-serif;
+
+    .table {
+        width: 100%;
+        margin-top: 1rem;
+        border-collapse: collapse;
+        color: #666;
+
+        &-head tr th {
+            text-overflow: ellipsis;
+            font-weight: 600;
+            font-size: 20px;
+            text-align: left;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid grey;
+        }
+
+
+
+        tr {
+            z-index: 0;
+        }
+
+        //tr
+        &-body {
+
+            tr td {
+                padding: 1rem .2rem;
+            }
+
+            td:nth-child(2) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                font-size: 1.4rem;
+
+                &::after {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    display: inline-block;
+                    content: '';
+                    width: 2em;
+                    height: 2em;
+                    z-index: -2;
+                }
+            }
+
+        }
+    }
+}
+
+.file-icon {
+    &.fa-folder-o {
+        color: $grey;
+    }
+
+    &.fa-file-excel-o {
+        color: $green;
+    }
+
+}
