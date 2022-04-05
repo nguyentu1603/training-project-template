@@ -115,18 +115,18 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.table-documents {
+.documents-container {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.table-documents .table {
+.documents-container .documents-table {
   width: 100%;
   margin-top: 1rem;
   border-collapse: collapse;
   color: #666;
 }
 
-.table-documents .table-head tr th {
+.documents-container .documents-table-head tr th {
   text-overflow: ellipsis;
   font-weight: 600;
   font-size: 20px;
@@ -135,16 +135,16 @@
   border-bottom: 1px solid grey;
 }
 
-.table-documents .table tr {
+.documents-container .documents-table tr {
   z-index: 0;
   border-bottom: 1px solid #edebe9;
 }
 
-.table-documents .table-body tr td {
+.documents-container .documents-table-body tr td {
   padding: 1rem .2rem;
 }
 
-.table-documents .table-body td:nth-child(1) {
+.documents-container .documents-table-body td:nth-child(1) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -158,7 +158,7 @@
   font-size: 1.4rem;
 }
 
-.table-documents .table-body td:nth-child(1)::after {
+.documents-container .documents-table-body td:nth-child(1)::after {
   position: absolute;
   left: 50%;
   top: 50%;

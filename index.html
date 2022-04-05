@@ -15,9 +15,8 @@
     />
     <title>Assignment 1</title>
   </head>
-
   <body>
-    <div class="navbar" id="myTopnav">
+    <nav class="navbar" id="myTopnav">
       <div class="dropdown">
         <button class="dropbtn">
           <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
@@ -68,26 +67,26 @@
       <a href="javascript:void(0);" class="icon" onclick="myNav()"
         >&#9776;</a
       >
-    </div>
-    <div class="container">
+    </nav>
+    <section class="documents-container">
       <h1 class="documents-header">Documents</h1>
       <div class="table-documents">
-        <table class="table" id="documents">
-          <thead class="table-head">
+        <table class="documents-table" id="documents">
+          <thead class="documents-table-head">
             <tr>
               <th style="text-align: center;">
                 <i class="fa fa-file-o" aria-hidden="true"></i>
               </th>
-              <th>Name</th>
-              <th>Modified</th>
-              <th>Modified by</th>
+              <th>Name <i class="fa fa-caret-down"></i></th>
+              <th>Modified <i class="fa fa-caret-down"></i></th>
+              <th>Modified by <i class="fa fa-caret-down"></i></th>
               <th>
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 Add column
               </th>
             </tr>
           </thead>
-          <tbody class="table-body">
+          <tbody class="documents-table-body">
             <tr>
               <td><i class="file-icon fa fa-folder-o"></i></td>
               <td>CAS</td>
@@ -101,7 +100,7 @@
                   aria-hidden="true"
                 ></i>
               </td>
-              <td>CoastedAndBargeLoading</td>
+              <td>CoastedAndBargeLoading.xlsx</td>
               <td>A few second ago</td>
               <td>Administrator MOD</td>
             </tr>
@@ -112,7 +111,7 @@
                   aria-hidden="true"
                 ></i>
               </td>
-              <td>RevenueByServices</td>
+              <td>RevenueByServices.xlsx</td>
               <td>A few second ago</td>
               <td>Administrator MOD</td>
             </tr>
@@ -123,7 +122,7 @@
                   aria-hidden="true"
                 ></i>
               </td>
-              <td>RevenueByServices2016</td>
+              <td>RevenueByServices2016.xlsx</td>
               <td>A few second ago</td>
               <td>Administrator MOD</td>
             </tr>
@@ -134,15 +133,14 @@
                   aria-hidden="true"
                 ></i>
               </td>
-              <td>RevenueByServices2017</td>
+              <td>RevenueByServices2017.xlsx</td>
               <td>A few second ago</td>
               <td>Administrator MOD</td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
-
+    </section>
     <script>
       function myNav() {
         var x = document.getElementById('myTopnav');
