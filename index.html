@@ -7,6 +7,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="Nguyen Tu">
 	<link href="./dist/css/home-page.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/fabric-icons.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Assignment 1</title>
 </head>
@@ -36,6 +37,10 @@
 			</div>
 		</div>
 		<a href="#">
+			<i class="file-icon fa fa-file-excel-o" aria-hidden="true"></i>
+			Export to Excel
+		</a>
+		<a href="#">
 			<i class="fa fa-refresh" aria-hidden="true"></i>
 			Sync
 		</a>
@@ -50,7 +55,10 @@
 				<a href="#">Link 2</a>
 			</div>
 		</div>
-		<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+		<a href="#">
+			<i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+		</a>
+		<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myNav()">&#9776;</a>
 	</div>
 	<div class="container">
 		<div>
@@ -131,7 +139,7 @@
 						<td>RevenueByServices2017</td>
 						<td>A few second ago</td>
 						<td>Administrator MOD</td>
-						<td></td>
+						<td><i class="ms-Icon ms-Icon--Glimmer"></i></td>
 					</tr>
 				</tbody>
 			</table>
@@ -139,7 +147,7 @@
 	</div>
 
 	<script>
-		function myFunction() {
+		function myNav() {
 			var x = document.getElementById("myTopnav");
 			if (x.className === "navbar") {
 				x.className += " responsive";

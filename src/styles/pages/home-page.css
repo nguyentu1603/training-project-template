@@ -131,6 +131,7 @@
 
 .table-documents .table tr {
   z-index: 0;
+  border-bottom: 1px solid #edebe9;
 }
 
 .table-documents .table-body tr td {
