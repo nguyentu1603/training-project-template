@@ -1,155 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="Nguyen Tu" />
-    <link href="./dist/css/home-page.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <title>Assignment 1</title>
-  </head>
-  <body>
-    <nav class="navbar" id="myTopnav">
-      <div class="dropdown">
-        <button class="dropbtn">
-          <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="Nguyen Tu" />
+  <link href="./dist/css/home-page.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title>Assignment 1</title>
+</head>
+
+<body>
+  <nav class="documents-navbar">
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+      <li>
+        <a href="#"> <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
           New
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">
+          <i class="fa fa-angle-down"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
           <i class="fa fa-upload nav-icon" aria-hidden="true"></i>
           Upload
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#">Files</a>
-          <a href="#">Folder</a>
-        </div>
-      </div>
-      <a href="#">
-        <i class="fa fa-refresh nav-icon" aria-hidden="true"></i>
-        Sync
-      </a>
-      <a href="#">
-        <i
-          class="file-icon fa fa-file-excel-o"
-          aria-hidden="true"
-        ></i>
-        Export to Excel
-      </a>
-      <div class="dropdown">
-        <button class="dropbtn">
+          <i class="fa fa-angle-down"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-refresh nav-icon" aria-hidden="true"></i>
+          Sync
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="file-icon fa fa-file-excel-o" aria-hidden="true"></i>
+          Export to Excel
+        </a>
+      </li>
+      <li>
+        <a href="#">
           <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
           Flow
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-        </div>
-      </div>
-      <a href="#">
-        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-      </a>
-      <a href="javascript:void(0);" class="icon" onclick="myNav()"
-        >&#9776;</a
-      >
-    </nav>
-    <section class="documents-container">
-      <h1 class="documents-header">Documents</h1>
-      <div class="table-documents">
-        <table class="documents-table" id="documents">
-          <thead class="documents-table-head">
-            <tr>
-              <th style="text-align: center;">
-                <i class="fa fa-file-o" aria-hidden="true"></i>
-              </th>
-              <th>Name <i class="fa fa-caret-down"></i></th>
-              <th>Modified <i class="fa fa-caret-down"></i></th>
-              <th>Modified by <i class="fa fa-caret-down"></i></th>
-              <th>
-                <i class="fa fa-plus" aria-hidden="true"></i>
-                Add column
-              </th>
-            </tr>
-          </thead>
-          <tbody class="documents-table-body">
-            <tr>
-              <td><i class="file-icon fa fa-folder-o"></i></td>
-              <td>CAS</td>
-              <td>April 30</td>
-              <td>Megan Owen</td>
-            </tr>
-            <tr>
-              <td>
-                <i
-                  class="file-icon fa fa-file-excel-o"
-                  aria-hidden="true"
-                ></i>
-              </td>
-              <td>CoastedAndBargeLoading.xlsx</td>
-              <td>A few second ago</td>
-              <td>Administrator MOD</td>
-            </tr>
-            <tr>
-              <td>
-                <i
-                  class="file-icon fa fa-file-excel-o"
-                  aria-hidden="true"
-                ></i>
-              </td>
-              <td>RevenueByServices.xlsx</td>
-              <td>A few second ago</td>
-              <td>Administrator MOD</td>
-            </tr>
-            <tr>
-              <td>
-                <i
-                  class="file-icon fa fa-file-excel-o"
-                  aria-hidden="true"
-                ></i>
-              </td>
-              <td>RevenueByServices2016.xlsx</td>
-              <td>A few second ago</td>
-              <td>Administrator MOD</td>
-            </tr>
-            <tr>
-              <td>
-                <i
-                  class="file-icon fa fa-file-excel-o"
-                  aria-hidden="true"
-                ></i>
-              </td>
-              <td>RevenueByServices2017.xlsx</td>
-              <td>A few second ago</td>
-              <td>Administrator MOD</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-    <script>
-      function myNav() {
-        var x = document.getElementById('myTopnav');
-        if (x.className === 'navbar') {
-          x.className += ' responsive';
-        } else {
-          x.className = 'navbar';
-        }
-      }
-    </script>
-  </body>
+          <i class="fa fa-angle-down"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <section class="documents-container">
+    <h1 class="documents-header">Documents</h1>
+    <div class="table-documents">
+      <table class="documents-table" id="documents">
+        <thead class="documents-table-head">
+          <tr>
+            <th class="file">
+              <i class="fa fa-file-o" aria-hidden="true"></i>
+            </th>
+            <th>Name</th>
+            <th>Modified <i class="fa fa-angle-down"></i></th>
+            <th>Modified by <i class="fa fa-angle-down"></i></th>
+            <th>
+              <i class="fa fa-plus" aria-hidden="true"></i>
+              Add column
+            </th>
+          </tr>
+        </thead>
+        <tbody class="documents-table-body">
+          <tr>
+            <td><i class="file-icon fa fa-folder-o"></i></td>
+            <td>CAS</td>
+            <td>April 30</td>
+            <td>Megan Owen</td>
+          </tr>
+          <tr>
+            <td>
+              <i class="file-icon fa fa-file-excel-o" aria-hidden="true"></i>
+            </td>
+            <td><span class="new-item"></span>CoastedAndBargeLoading.xlsx</td>
+            <td>A few second ago</td>
+            <td>Administrator MOD</td>
+          </tr>
+          <tr>
+            <td>
+              <i class="file-icon fa fa-file-excel-o" aria-hidden="true"></i>
+            </td>
+            <td><span class="new-item"></span>RevenueByServices.xlsx</td>
+            <td>A few second ago</td>
+            <td>Administrator MOD</td>
+          </tr>
+          <tr>
+            <td>
+              <i class="file-icon fa fa-file-excel-o" aria-hidden="true"></i>
+            </td>
+            <td><span class="new-item"></span>RevenueByServices2016.xlsx</td>
+            <td>A few second ago</td>
+            <td>Administrator MOD</td>
+          </tr>
+          <tr>
+            <td>
+              <i class="file-icon fa fa-file-excel-o" aria-hidden="true"></i>
+            </td>
+            <td><span class="new-item"></span>RevenueByServices2017.xlsx</td>
+            <td>A few second ago</td>
+            <td>Administrator MOD</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</body>
+
 </html>

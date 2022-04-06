@@ -1,1 +1,17 @@
 // Define mixins
+@mixin nav-bg-color {
+    background-color: $nav-bg-color;
+}
+
+@mixin nav-hover-color {
+    background-color: $nav-hover-color;
+}
+
+@mixin nav-menu-color {
+    background-color: $color-black;
+}
+
+@mixin animation-dropdown-menu($time) {
+    transition: all $time ease-out; 
+    width: 100%;
+}

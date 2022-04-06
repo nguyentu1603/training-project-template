@@ -1,9 +1,25 @@
 // Define variables
-$navBackground: #E7E9EB;
-$primaryText: black;
-$white: #fff;
-$black: black;
-$grey: #666;
-$green: #49b35e;
-$red: #f43f31;
-$purple: #c71d4d;
+
+// Navbar
+$nav-bg-color: #E7E9EB;
+$nav-active-color: #122233;
+$nav-hover-color: rgba(191, 191, 191, 0.719);
+$nav-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+// Text Color
+$text-primary: black;
+
+// Color
+$color-white: #fff;
+$color-black: black;
+$color-grey: #666;
+$color-red: #f43f31;
+$color-purple: #da168e;
+$color-green: #34b115;
+
+//Table
+$table-th-color: #E7E9EB;
+$table-border-color: #ccc;
+
+//Animation
+$animation-2s : all .2s ease-out;
