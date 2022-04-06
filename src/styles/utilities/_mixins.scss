@@ -12,6 +12,31 @@
 }
 
 @mixin animation-dropdown-menu($time) {
-    transition: all $time ease-out; 
+    transition: all $time ease-out;
     width: 100%;
+}
+
+@mixin draw-border-color($px, $style, $color, $position) {
+    border-#{$position}: $px $style $color;
+}
+
+@mixin mobile-documents-layout {
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+        font-weight: 700;
+    }
+}
+
+@mixin mobile-documents-table-header {
+    @for $i from 1 through length($dataHeaderTable) {
+        &:nth-of-type(#{$i}):before {
+            content: nth($dataHeaderTable, $i);
+        }
+    }
 }

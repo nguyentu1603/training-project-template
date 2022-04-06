@@ -2,7 +2,6 @@
 .documents-navbar {
   overflow: hidden;
   @include nav-bg-color;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .1);
 
   ul {
     margin: 0;
@@ -42,7 +41,6 @@
 
   .menu-icon {
     cursor: pointer;
-    display: inline-block;
     padding: 28px 20px;
     position: relative;
     user-select: none;
@@ -58,11 +56,18 @@
       height: 2px;
       position: relative;
       width: 18px;
+
+      &:before {
+        top: 5px;
+      }
+
+      &:after {
+        top: -5px;
+      }
     }
   }
 
   /* menu btn */
-
   .menu-btn {
     display: none;
   }
@@ -83,13 +88,6 @@
   @include animation-dropdown-menu(.2s);
 }
 
-.documents-navbar .menu-icon .navicon:before {
-  top: 5px;
-}
-
-.documents-navbar .menu-icon .navicon:after {
-  top: -5px;
-}
 
 @media (min-width: 768px) {
   .documents-navbar {

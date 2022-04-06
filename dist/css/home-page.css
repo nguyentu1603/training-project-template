@@ -85,9 +85,6 @@ mark,
 audio,
 video {
   margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
   font: inherit;
   vertical-align: baseline;
 }
@@ -153,7 +150,6 @@ h2 {
 .documents-navbar {
   overflow: hidden;
   background-color: #E7E9EB;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
   /* menu */
   /* menu btn */
 }
@@ -188,7 +184,6 @@ h2 {
 }
 .documents-navbar .menu-icon {
   cursor: pointer;
-  display: inline-block;
   padding: 28px 20px;
   position: relative;
   -webkit-user-select: none;
@@ -207,6 +202,12 @@ h2 {
   position: relative;
   width: 18px;
 }
+.documents-navbar .menu-icon .navicon:before {
+  top: 5px;
+}
+.documents-navbar .menu-icon .navicon:after {
+  top: -5px;
+}
 .documents-navbar .menu-btn {
   display: none;
 }
@@ -223,14 +224,6 @@ h2 {
   position: absolute;
   transition: all 0.2s ease-out;
   width: 100%;
-}
-
-.documents-navbar .menu-icon .navicon:before {
-  top: 5px;
-}
-
-.documents-navbar .menu-icon .navicon:after {
-  top: -5px;
 }
 
 @media (min-width: 768px) {
@@ -256,6 +249,8 @@ h2 {
 
 .documents-container .table-documents {
   padding: 10px;
+  width: 90%;
+  margin: 0 auto;
 }
 .documents-container .documents-table {
   width: 100%;
@@ -269,14 +264,14 @@ h2 {
   font-size: 1.5em;
   text-align: left;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #666;
+  border-bottom: 1px solid #ccc;
 }
 .documents-container .documents-table .file {
   text-align: center;
 }
 .documents-container .documents-table tr {
   z-index: 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #E7E9EB;
 }
 .documents-container .documents-table-body tr td {
   padding: 1rem 0.2rem;
@@ -323,31 +318,24 @@ tr {
   }
 
   tr {
-    border: 1px solid #ccc;
+    border: 1px solid #E7E9EB;
     border-collapse: collapse;
     margin: 20px;
-    box-shadow: 0 0 0 0px #ccc;
+    box-shadow: 0 0 0 0px #E7E9EB;
   }
 
   #documents td {
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #E7E9EB;
     position: relative;
     padding-left: 40%;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
-  .documents-container .documents-table-body td:nth-child(1) {
-    justify-content: flex-end;
-    padding: 15px;
+  #documents td:first-child {
+    background-color: #ccc;
   }
-
-  td:first-child {
-    background-color: #E7E9EB;
-  }
-
-  td:before {
+  #documents td:before {
     position: absolute;
     top: 6px;
     left: 6px;
@@ -357,21 +345,22 @@ tr {
     font-style: italic;
     padding: 10px 0px 10px 0px;
   }
-
-  td:nth-of-type(1):before {
+  #documents td:nth-of-type(1):before {
     content: "File Type";
   }
-
-  td:nth-of-type(2):before {
+  #documents td:nth-of-type(2):before {
     content: "Name";
   }
-
-  td:nth-of-type(3):before {
+  #documents td:nth-of-type(3):before {
     content: "Modified";
   }
-
-  td:nth-of-type(4):before {
+  #documents td:nth-of-type(4):before {
     content: "Modified By";
+  }
+
+  .documents-container .documents-table-body td:nth-child(1) {
+    justify-content: flex-end;
+    padding: 15px;
   }
 }
 .new-item {

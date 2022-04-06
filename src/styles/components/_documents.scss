@@ -6,6 +6,8 @@
 .documents-container {
     .table-documents {
         padding: 10px;
+        width: 90%;
+        margin: 0 auto;
     }
 
     .documents-table {
@@ -20,7 +22,7 @@
             font-size: 1.5em;
             text-align: left;
             padding-bottom: 1rem;
-            border-bottom: 1px solid $color-grey;
+            @include draw-border-color(1px, solid, $table-th-color, bottom)
         }
 
         .file {
@@ -29,7 +31,7 @@
 
         tr {
             z-index: 0;
-            border-bottom: 1px solid $table-border-color;
+            @include draw-border-color(1px, solid, $table-border-color, bottom)
         }
 
         //table row
@@ -45,7 +47,6 @@
                 justify-content: center;
                 position: relative;
                 font-size: 1.4rem;
-
 
                 &::after {
                     position: absolute;
@@ -76,20 +77,12 @@
 @media only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px) {
 
-    table,
-    thead,
-    tbody,
-    th,
-    td,
-    tr {
-        display: block;
-        font-weight: 700;
-    }
+    @include mobile-documents-layout;
 
     thead tr {
         display: none;
     }
-
+    
     tr {
         border: 1px solid $table-border-color;
         border-collapse: collapse;
@@ -104,6 +97,23 @@
         padding-left: 40%;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        &:first-child {
+            background-color: $table-th-color;
+        }
+
+        &:before {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+            font-style: italic;
+            padding: 10px 0px 10px 0px;
+        }
+
+        @include mobile-documents-table-header;
     }
 
     .documents-container .documents-table-body td:nth-child(1) {
@@ -111,36 +121,6 @@
         padding: 15px;
     }
 
-    td:first-child {
-        background-color: $table-th-color;
-    }
-
-    td:before {
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        font-style: italic;
-        padding: 10px 0px 10px 0px;
-    }
-
-    td:nth-of-type(1):before {
-        content: "File Type";
-    }
-
-    td:nth-of-type(2):before {
-        content: "Name";
-    }
-
-    td:nth-of-type(3):before {
-        content: "Modified";
-    }
-
-    td:nth-of-type(4):before {
-        content: "Modified By";
-    }
 }
 
 .new-item {
@@ -149,7 +129,8 @@
     position: relative;
     color: $color-red;
     left: -10px;
-    &::before{
+
+    &::before {
         content: 'New';
     }
 }

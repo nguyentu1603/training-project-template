@@ -18,8 +18,11 @@ $color-purple: #da168e;
 $color-green: #34b115;
 
 //Table
-$table-th-color: #E7E9EB;
-$table-border-color: #ccc;
+$table-th-color: #ccc;
+$table-border-color: #E7E9EB;
 
 //Animation
 $animation-2s : all .2s ease-out;
+
+//Documents Table 
+$dataHeaderTable:("File Type", "Name", "Modified", "Modified By")
