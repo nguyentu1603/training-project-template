@@ -45,7 +45,6 @@
     td,
     tr {
         display: block;
-        font-weight: 700;
     }
 }
 
@@ -53,26 +52,34 @@
     @for $i from 1 through length($dataHeaderTable) {
         &:nth-of-type(#{$i}):before {
             content: nth($dataHeaderTable, $i);
+            font-weight: 700;
         }
     }
 }
 
-// Breakepoint
-@mixin breakpoint($point) {
+// Text Overflow
+@mixin text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Media Screen
+@mixin media-breakpoint($point) {
     @if $point==tablet {
-        @media (min-width: 768px) and (max-width: 1024px) {
+        @media only screen and (min-width: $sm-screen) and (max-width: $lg-screen) {
             @content;
         }
     }
 
     @else if $point==phone {
-        @media (max-width: 767px) {
+        @media only screen and (max-width: $md-screen) {
             @content;
         }
     }
 
     @else if $point==desktop {
-        @media (min-width: 1025px) {
+        @media only screen and (min-width: $xl-screen) {
             @content;
         }
     }

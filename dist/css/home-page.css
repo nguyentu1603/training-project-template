@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Mulish:wght@500&display=swap);
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -134,7 +135,7 @@ table {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Mulish", sans-serif;
 }
 
 h1 {
@@ -150,8 +151,6 @@ h2 {
 .documents-navbar {
   background-color: #E7E9EB;
   overflow: hidden;
-  /* menu */
-  /* menu btn */
 }
 .documents-navbar ul {
   background-color: #E7E9EB;
@@ -167,15 +166,15 @@ h2 {
   padding-left: 20px;
   display: block;
   text-decoration: none;
-  color: black;
+  color: #00092C;
 }
 .documents-navbar li a i .nav-icon {
   color: #da168e;
 }
 .documents-navbar li a:hover,
 .documents-navbar .documents-navbar .menu-btn:hover {
-  background-color: rgba(191, 191, 191, 0.719);
-  font-weight: 500;
+  background-color: #D1D1D1;
+  font-weight: 700;
 }
 .documents-navbar .menu {
   clear: both;
@@ -186,30 +185,13 @@ h2 {
   color: #da168e;
 }
 .documents-navbar .menu-icon {
+  font-size: 1.25rem;
   cursor: pointer;
-  padding: 28px 20px;
-  position: relative;
-  -webkit-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
   margin: 10px;
   padding: 15px;
-  border: 1px solid #666;
+  border: 1px solid #DFDFDE;
   border-radius: 5px;
   float: right;
-}
-.documents-navbar .menu-icon .navicon {
-  background-color: black;
-  display: block;
-  height: 2px;
-  position: relative;
-  width: 18px;
-}
-.documents-navbar .menu-icon .navicon:before {
-  top: 5px;
-}
-.documents-navbar .menu-icon .navicon:after {
-  top: -5px;
 }
 .documents-navbar .menu-btn {
   display: none;
@@ -218,18 +200,7 @@ h2 {
   max-height: 500px;
 }
 
-.documents-navbar .menu-icon .navicon:before,
-.documents-navbar .menu-icon .navicon:after {
-  background-color: black;
-  transition: all 0.2s ease-out;
-  width: 100%;
-  content: "";
-  display: block;
-  height: 100%;
-  position: absolute;
-}
-
-@media (min-width: 1025px) {
+@media only screen and (min-width: 1200px) {
   .documents-navbar li {
     float: left;
   }
@@ -251,9 +222,8 @@ h2 {
 .documents-header {
   padding-top: 40px;
   padding-right: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   padding-left: 40px;
-  font-weight: 300;
 }
 
 .documents-container .table-documents {
@@ -265,13 +235,10 @@ h2 {
   width: 100%;
   margin-top: 1rem;
   border-collapse: collapse;
-  color: #666;
 }
 .documents-container .documents-table-head tr th {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #D1D1D1;
   font-size: 1.25rem;
-  text-overflow: ellipsis;
-  font-weight: 400;
   text-align: left;
   padding-bottom: 1rem;
 }
@@ -288,24 +255,11 @@ h2 {
 .documents-container .documents-table-body td:nth-child(1) {
   font-size: 1rem;
   display: flex;
-  align-items: center;
   justify-content: center;
-  position: relative;
-}
-.documents-container .documents-table-body td:nth-child(1)::after {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: inline-block;
-  content: "";
-  width: 2em;
-  height: 2em;
-  z-index: -2;
 }
 
 .file-icon.fa-folder-o {
-  color: #666;
+  color: #D1D1D1;
 }
 .file-icon.fa-file-excel-o {
   color: #34b115;
@@ -314,10 +268,11 @@ h2 {
 .new-item {
   position: relative;
   color: #f43f31;
-  top: -10px;
+  display: inline !important;
+  top: -9px;
 }
 
-@media (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   table,
 thead,
 tbody,
@@ -325,7 +280,6 @@ th,
 td,
 tr {
     display: block;
-    font-weight: 700;
   }
 
   thead tr {
@@ -334,44 +288,49 @@ tr {
 
   tr {
     border: 1px solid #E7E9EB;
-    border-collapse: collapse;
     margin: 20px;
-    box-shadow: 0 0 0 0px #E7E9EB;
   }
 
   #documents td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 45%;
     border: none;
     border-bottom: 1px solid #E7E9EB;
     position: relative;
-    padding-left: 40%;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   #documents td:nth-of-type(1):before {
     content: "File Type";
+    font-weight: 700;
   }
   #documents td:nth-of-type(2):before {
     content: "Name";
+    font-weight: 700;
   }
   #documents td:nth-of-type(3):before {
     content: "Modified";
+    font-weight: 700;
   }
   #documents td:nth-of-type(4):before {
     content: "Modified By";
+    font-weight: 700;
   }
   #documents td:first-child {
-    background-color: #ccc;
+    background-color: #E7E9EB;
   }
   #documents td:before {
     padding-top: 10px;
     padding-right: 0px;
     padding-bottom: 10px;
     padding-left: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     position: absolute;
     top: 6px;
     left: 6px;
     width: 45%;
-    white-space: nowrap;
     font-style: italic;
   }
 

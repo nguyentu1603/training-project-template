@@ -1,28 +1,36 @@
 // Define variables
 
-// Navbar
-$nav-bg-color: #E7E9EB;
-$nav-active-color: #122233;
-$nav-hover-color: rgba(191, 191, 191, 0.719);
-$nav-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-
-// Text Color
-$text-primary: black;
-
 // Color
-$color-white: #fff;
-$color-black: black;
-$color-grey: #666;
+$color-white: #F7F7F7;
+$color-black: #00092C;
+$color-grey: #D1D1D1;
+$color-grey-light: #DFDFDE;
 $color-red: #f43f31;
 $color-purple: #da168e;
 $color-green: #34b115;
 
+// Text Color
+$text-primary: #00092C;
+
+// Navbar
+$nav-bg-color: #E7E9EB;
+$nav-active-color: #00092C;
+$nav-hover-color: #D1D1D1;
+$nav-box-shadow: 0px 8px 16px 0px #00092C;
+
 //Table
-$table-th-color: #ccc;
+$table-th-color: #D1D1D1;
+$table-th-color-light: #E7E9EB;
 $table-border-color: #E7E9EB;
 
 //Animation
 $animation-2s : all .2s ease-out;
 
 //Documents Table 
-$dataHeaderTable:("File Type", "Name", "Modified", "Modified By")
+$dataHeaderTable:("File Type", "Name", "Modified", "Modified By");
+
+//Breakpoints 
+$sm-screen: 576px;
+$md-screen: 768px;
+$lg-screen: 992px;
+$xl-screen: 1200px;

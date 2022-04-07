@@ -25,10 +25,9 @@
   li a:hover,
   .documents-navbar .menu-btn:hover {
     @include nav-hover-color;
-    font-weight: 500;
+    font-weight: 700;
   }
 
-  /* menu */
   .menu {
     clear: both;
     max-height: 0;
@@ -40,34 +39,15 @@
   }
 
   .menu-icon {
+    @include font-size(20px);
     cursor: pointer;
-    padding: 28px 20px;
-    position: relative;
-    user-select: none;
     margin: 10px;
     padding: 15px;
-    border: 1px solid $color-grey;
+    border: 1px solid $color-grey-light;
     border-radius: 5px;
     float: right;
-
-    .navicon {
-      @include nav-menu-color;
-      display: block;
-      height: 2px;
-      position: relative;
-      width: 18px;
-
-      &:before {
-        top: 5px;
-      }
-
-      &:after {
-        top: -5px;
-      }
-    }
   }
 
-  /* menu btn */
   .menu-btn {
     display: none;
   }
@@ -78,17 +58,9 @@
 
 }
 
-.documents-navbar .menu-icon .navicon:before,
-.documents-navbar .menu-icon .navicon:after {
-  @include nav-menu-color;
-  @include animation-dropdown-menu(.2s);
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-}
 
-@include breakpoint(desktop) {
+
+@include media-breakpoint(desktop) {
   .documents-navbar {
     li {
       float: left;
@@ -111,4 +83,3 @@
 
   }
 }
-

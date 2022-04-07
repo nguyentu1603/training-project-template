@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@500&display=swap");
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -134,7 +135,7 @@ table {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Mulish", sans-serif;
 }
 
 h1 {
@@ -148,25 +149,28 @@ h2 {
 }
 
 .documents-navbar {
-  overflow: hidden;
   background-color: #E7E9EB;
+  overflow: hidden;
   /* menu */
   /* menu btn */
 }
 
 .documents-navbar ul {
+  background-color: #E7E9EB;
   margin: 0;
   padding: 0;
   list-style: none;
   overflow: hidden;
-  background-color: #E7E9EB;
 }
 
 .documents-navbar li a {
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
   display: block;
-  padding: 20px 20px;
   text-decoration: none;
-  color: black;
+  color: #00092C;
 }
 
 .documents-navbar li a i .nav-icon {
@@ -175,7 +179,7 @@ h2 {
 
 .documents-navbar li a:hover,
 .documents-navbar .documents-navbar .menu-btn:hover {
-  background-color: rgba(191, 191, 191, 0.719);
+  background-color: #D1D1D1;
   font-weight: 500;
 }
 
@@ -200,13 +204,13 @@ h2 {
           user-select: none;
   margin: 10px;
   padding: 15px;
-  border: 1px solid #666;
+  border: 1px solid #DFDFDE;
   border-radius: 5px;
   float: right;
 }
 
 .documents-navbar .menu-icon .navicon {
-  background-color: black;
+  background-color: #00092C;
   display: block;
   height: 2px;
   position: relative;
@@ -231,22 +235,25 @@ h2 {
 
 .documents-navbar .menu-icon .navicon:before,
 .documents-navbar .menu-icon .navicon:after {
-  background-color: black;
+  background-color: #00092C;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  width: 100%;
   content: '';
   display: block;
   height: 100%;
   position: absolute;
-  -webkit-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .documents-navbar li {
     float: left;
   }
   .documents-navbar li a {
-    padding: 20px 30px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
   }
   .documents-navbar .menu {
     clear: none;
@@ -259,8 +266,10 @@ h2 {
 }
 
 .documents-header {
-  padding: 40px;
-  font-weight: 300;
+  padding-top: 40px;
+  padding-right: 40px;
+  padding-bottom: 20px;
+  padding-left: 40px;
 }
 
 .documents-container .table-documents {
@@ -273,24 +282,22 @@ h2 {
   width: 100%;
   margin-top: 1rem;
   border-collapse: collapse;
-  color: #666;
 }
 
 .documents-container .documents-table-head tr th {
+  border-bottom: 1px solid #D1D1D1;
+  font-size: calc($size / 16px) "rem";
   text-overflow: ellipsis;
-  font-weight: 400;
-  font-size: 1.5em;
   text-align: left;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #ccc;
 }
 
 .documents-container .documents-table .file {
   text-align: center;
+  width: 70px;
 }
 
 .documents-container .documents-table tr {
-  z-index: 0;
   border-bottom: 1px solid #E7E9EB;
 }
 
@@ -299,6 +306,7 @@ h2 {
 }
 
 .documents-container .documents-table-body td:nth-child(1) {
+  font-size: calc($size / 16px) "rem";
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -309,7 +317,6 @@ h2 {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-  font-size: 1.4rem;
 }
 
 .documents-container .documents-table-body td:nth-child(1)::after {
@@ -322,18 +329,24 @@ h2 {
   content: '';
   width: 2em;
   height: 2em;
-  z-index: -2;
 }
 
 .file-icon.fa-folder-o {
-  color: #666;
+  color: #D1D1D1;
 }
 
 .file-icon.fa-file-excel-o {
   color: #34b115;
 }
 
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+.new-item {
+  position: relative;
+  color: #f43f31;
+  display: inline !important;
+  top: -9px;
+}
+
+@media (max-width: 767px) {
   table,
   thead,
   tbody,
@@ -341,50 +354,52 @@ h2 {
   td,
   tr {
     display: block;
-    font-weight: 700;
   }
   thead tr {
     display: none;
   }
   tr {
     border: 1px solid #E7E9EB;
-    border-collapse: collapse;
     margin: 20px;
-    -webkit-box-shadow: 0 0 0 0px #E7E9EB;
-            box-shadow: 0 0 0 0px #E7E9EB;
   }
   #documents td {
     border: none;
     border-bottom: 1px solid #E7E9EB;
     position: relative;
-    padding-left: 40%;
+    padding-left: 50%;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  #documents td:nth-of-type(1):before {
+    content: "File Type";
+    font-weight: 700;
+  }
+  #documents td:nth-of-type(2):before {
+    content: "Name";
+    font-weight: 700;
+  }
+  #documents td:nth-of-type(3):before {
+    content: "Modified";
+    font-weight: 700;
+  }
+  #documents td:nth-of-type(4):before {
+    content: "Modified By";
+    font-weight: 700;
+  }
   #documents td:first-child {
-    background-color: #ccc;
+    background-color: #E7E9EB;
   }
   #documents td:before {
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
     position: absolute;
     top: 6px;
     left: 6px;
     width: 45%;
-    padding-right: 10px;
     white-space: nowrap;
     font-style: italic;
-    padding: 10px 0px 10px 0px;
-  }
-  #documents td:nth-of-type(1):before {
-    content: "File Type";
-  }
-  #documents td:nth-of-type(2):before {
-    content: "Name";
-  }
-  #documents td:nth-of-type(3):before {
-    content: "Modified";
-  }
-  #documents td:nth-of-type(4):before {
-    content: "Modified By";
   }
   .documents-container .documents-table-body td:nth-child(1) {
     -webkit-box-pack: end;
@@ -392,17 +407,5 @@ h2 {
             justify-content: flex-end;
     padding: 15px;
   }
-}
-
-.new-item {
-  display: table-caption;
-  font-size: 0.66em;
-  position: relative;
-  color: #f43f31;
-  left: -10px;
-}
-
-.new-item::before {
-  content: 'New';
 }
 /*# sourceMappingURL=home-page.css.map */

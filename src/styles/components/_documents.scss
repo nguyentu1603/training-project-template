@@ -1,6 +1,5 @@
 .documents-header {
-    @include padding(40px, 40px, 40px, 40px);
-    font-weight: 300;
+    @include padding(40px, 40px, 20px, 40px);
 }
 
 .documents-container {
@@ -14,13 +13,10 @@
         width: 100%;
         margin-top: 1rem;
         border-collapse: collapse;
-        color: $color-grey;
 
         &-head tr th {
             @include draw-border-color(1px, solid, $table-th-color, bottom);
             @include font-size(20px);
-            text-overflow: ellipsis;
-            font-weight: 400;
             text-align: left;
             padding-bottom: 1rem;
         }
@@ -43,21 +39,7 @@
             td:nth-child(1) {
                 @include font-size(16px);
                 display: flex;
-                align-items: center;
                 justify-content: center;
-                position: relative;
-
-                &::after {
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
-                    display: inline-block;
-                    content: '';
-                    width: 2em;
-                    height: 2em;
-                    z-index: -2;
-                }
             }
         }
     }
@@ -75,11 +57,12 @@
 
 .new-item {
     position: relative;
-    color: $color-red;
-    top: -10px;
+    color: #f43f31;
+    display: inline !important;
+    top: -9px;
 }
 
-@include breakpoint(phone) {
+@include media-breakpoint(phone) {
     @include mobile-documents-layout;
 
     thead tr {
@@ -88,32 +71,29 @@
 
     tr {
         border: 1px solid $table-border-color;
-        border-collapse: collapse;
         margin: 20px;
-        box-shadow: 0 0 0 0px $table-border-color;
     }
 
     #documents td {
         @include mobile-documents-table-header;
-        
+        @include text-overflow;
+        padding-left: 45%;
         border: none;
         border-bottom: 1px solid $table-border-color;
         position: relative;
-        padding-left: 40%;
-        overflow: hidden;
-        text-overflow: ellipsis;
+
 
         &:first-child {
-            background-color: $table-th-color;
+            background-color: $table-th-color-light;
         }
 
         &:before {
             @include padding(10px, 0px, 10px, 0px);
+            @include text-overflow;
             position: absolute;
             top: 6px;
             left: 6px;
             width: 45%;
-            white-space: nowrap;
             font-style: italic;
         }
 
