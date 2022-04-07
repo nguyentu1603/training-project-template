@@ -1,19 +1,19 @@
 // Navbar 
 .documents-navbar {
-  overflow: hidden;
   @include nav-bg-color;
+  overflow: hidden;
 
   ul {
+    @include nav-bg-color;
     margin: 0;
     padding: 0;
     list-style: none;
     overflow: hidden;
-    @include nav-bg-color;
   }
 
   li a {
+    @include padding(20px, 20px, 20px, 20px);
     display: block;
-    padding: 20px 20px;
     text-decoration: none;
     color: $color-black;
 
@@ -81,21 +81,20 @@
 .documents-navbar .menu-icon .navicon:before,
 .documents-navbar .menu-icon .navicon:after {
   @include nav-menu-color;
+  @include animation-dropdown-menu(.2s);
   content: '';
   display: block;
   height: 100%;
   position: absolute;
-  @include animation-dropdown-menu(.2s);
 }
 
-
-@media (min-width: 768px) {
+@include breakpoint(desktop) {
   .documents-navbar {
     li {
       float: left;
 
       a {
-        padding: 20px 30px;
+        @include padding(20px, 20px, 20px, 20px);
       }
 
     }
@@ -112,3 +111,4 @@
 
   }
 }
+

@@ -148,21 +148,24 @@ h2 {
 }
 
 .documents-navbar {
-  overflow: hidden;
   background-color: #E7E9EB;
+  overflow: hidden;
   /* menu */
   /* menu btn */
 }
 .documents-navbar ul {
+  background-color: #E7E9EB;
   margin: 0;
   padding: 0;
   list-style: none;
   overflow: hidden;
-  background-color: #E7E9EB;
 }
 .documents-navbar li a {
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
   display: block;
-  padding: 20px 20px;
   text-decoration: none;
   color: black;
 }
@@ -218,20 +221,23 @@ h2 {
 .documents-navbar .menu-icon .navicon:before,
 .documents-navbar .menu-icon .navicon:after {
   background-color: black;
+  transition: all 0.2s ease-out;
+  width: 100%;
   content: "";
   display: block;
   height: 100%;
   position: absolute;
-  transition: all 0.2s ease-out;
-  width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .documents-navbar li {
     float: left;
   }
   .documents-navbar li a {
-    padding: 20px 30px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
   }
   .documents-navbar .menu {
     clear: none;
@@ -243,7 +249,10 @@ h2 {
   }
 }
 .documents-header {
-  padding: 40px;
+  padding-top: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  padding-left: 40px;
   font-weight: 300;
 }
 
@@ -259,29 +268,29 @@ h2 {
   color: #666;
 }
 .documents-container .documents-table-head tr th {
+  border-bottom: 1px solid #ccc;
+  font-size: 1.25rem;
   text-overflow: ellipsis;
   font-weight: 400;
-  font-size: 1.5em;
   text-align: left;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #ccc;
 }
 .documents-container .documents-table .file {
   text-align: center;
+  width: 70px;
 }
 .documents-container .documents-table tr {
-  z-index: 0;
   border-bottom: 1px solid #E7E9EB;
 }
 .documents-container .documents-table-body tr td {
   padding: 1rem 0.2rem;
 }
 .documents-container .documents-table-body td:nth-child(1) {
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  font-size: 1.4rem;
 }
 .documents-container .documents-table-body td:nth-child(1)::after {
   position: absolute;
@@ -302,7 +311,13 @@ h2 {
   color: #34b115;
 }
 
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+.new-item {
+  position: relative;
+  color: #f43f31;
+  top: -10px;
+}
+
+@media (max-width: 767px) {
   table,
 thead,
 tbody,
@@ -332,19 +347,6 @@ tr {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  #documents td:first-child {
-    background-color: #ccc;
-  }
-  #documents td:before {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-    font-style: italic;
-    padding: 10px 0px 10px 0px;
-  }
   #documents td:nth-of-type(1):before {
     content: "File Type";
   }
@@ -357,21 +359,26 @@ tr {
   #documents td:nth-of-type(4):before {
     content: "Modified By";
   }
+  #documents td:first-child {
+    background-color: #ccc;
+  }
+  #documents td:before {
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    white-space: nowrap;
+    font-style: italic;
+  }
 
   .documents-container .documents-table-body td:nth-child(1) {
     justify-content: flex-end;
     padding: 15px;
   }
-}
-.new-item {
-  display: table-caption;
-  font-size: 0.66em;
-  position: relative;
-  color: #f43f31;
-  left: -10px;
-}
-.new-item::before {
-  content: "New";
 }
 
 /*# sourceMappingURL=home-page.css.map*/

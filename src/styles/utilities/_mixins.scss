@@ -1,4 +1,19 @@
 // Define mixins
+
+// Font Size
+@mixin font-size($size) {
+    font-size: calculateRem($size);
+}
+
+// Padding
+@mixin padding($top, $right, $bottom, $left) {
+    padding-top: $top;
+    padding-right: $right;
+    padding-bottom: $bottom;
+    padding-left: $left;
+}
+
+// Navbar
 @mixin nav-bg-color {
     background-color: $nav-bg-color;
 }
@@ -16,6 +31,7 @@
     width: 100%;
 }
 
+// Documents table layout
 @mixin draw-border-color($px, $style, $color, $position) {
     border-#{$position}: $px $style $color;
 }
@@ -37,6 +53,27 @@
     @for $i from 1 through length($dataHeaderTable) {
         &:nth-of-type(#{$i}):before {
             content: nth($dataHeaderTable, $i);
+        }
+    }
+}
+
+// Breakepoint
+@mixin breakpoint($point) {
+    @if $point==tablet {
+        @media (min-width: 768px) and (max-width: 1024px) {
+            @content;
+        }
+    }
+
+    @else if $point==phone {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+
+    @else if $point==desktop {
+        @media (min-width: 1025px) {
+            @content;
         }
     }
 }

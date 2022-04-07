@@ -1,5 +1,5 @@
 .documents-header {
-    padding: 40px;
+    @include padding(40px, 40px, 40px, 40px);
     font-weight: 300;
 }
 
@@ -17,24 +17,23 @@
         color: $color-grey;
 
         &-head tr th {
+            @include draw-border-color(1px, solid, $table-th-color, bottom);
+            @include font-size(20px);
             text-overflow: ellipsis;
             font-weight: 400;
-            font-size: 1.5em;
             text-align: left;
             padding-bottom: 1rem;
-            @include draw-border-color(1px, solid, $table-th-color, bottom)
         }
 
         .file {
             text-align: center;
+            width: 70px;
         }
 
         tr {
-            z-index: 0;
-            @include draw-border-color(1px, solid, $table-border-color, bottom)
+            @include draw-border-color(1px, solid, $table-border-color, bottom);
         }
 
-        //table row
         &-body {
 
             tr td {
@@ -42,11 +41,11 @@
             }
 
             td:nth-child(1) {
+                @include font-size(16px);
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 position: relative;
-                font-size: 1.4rem;
 
                 &::after {
                     position: absolute;
@@ -74,15 +73,19 @@
     }
 }
 
-@media only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px) {
+.new-item {
+    position: relative;
+    color: $color-red;
+    top: -10px;
+}
 
+@include breakpoint(phone) {
     @include mobile-documents-layout;
 
     thead tr {
         display: none;
     }
-    
+
     tr {
         border: 1px solid $table-border-color;
         border-collapse: collapse;
@@ -91,6 +94,8 @@
     }
 
     #documents td {
+        @include mobile-documents-table-header;
+        
         border: none;
         border-bottom: 1px solid $table-border-color;
         position: relative;
@@ -103,34 +108,19 @@
         }
 
         &:before {
+            @include padding(10px, 0px, 10px, 0px);
             position: absolute;
             top: 6px;
             left: 6px;
             width: 45%;
-            padding-right: 10px;
             white-space: nowrap;
             font-style: italic;
-            padding: 10px 0px 10px 0px;
         }
 
-        @include mobile-documents-table-header;
     }
 
     .documents-container .documents-table-body td:nth-child(1) {
         justify-content: flex-end;
         padding: 15px;
-    }
-
-}
-
-.new-item {
-    display: table-caption;
-    font-size: 0.66em;
-    position: relative;
-    color: $color-red;
-    left: -10px;
-
-    &::before {
-        content: 'New';
     }
 }
