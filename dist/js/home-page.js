@@ -86,6 +86,69 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/scripts/components/_documents.ts":
+/*!**********************************************!*\
+  !*** ./src/scripts/components/_documents.ts ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const renderDocuments = () => {
+  class FileService {
+    constructor() {
+      this.dataFile = this.setData();
+    }
+
+    setData() {
+      return [{
+        id: 1,
+        name: "RevenueByServices.xlsx",
+        type: "",
+        createdAt: "A few second ago",
+        modifiedAt: "A few second ago",
+        modifiedBy: "Nguyễn Tú"
+      }, {
+        id: 2,
+        name: "RevenueByServices.xlsx",
+        type: "",
+        createdAt: "A few second ago",
+        modifiedAt: "A few second ago",
+        modifiedBy: "Nguyễn Tú"
+      }];
+    }
+
+    showFileToDocuments() {
+      let tbody = document.getElementById('dataDocuments');
+      let _tr = '';
+
+      for (const obj of this.dataFile) {
+        _tr += `
+                <tr>
+                    <td>
+                    <i class="file-icon fa fa-file-excel-o"></i>
+                    </td>
+                    <td><i class="fa fa-yelp new-item"></i>${obj.name}</td>
+                    <td>${obj.createdAt}</td>
+                    <td>${obj.modifiedBy}</td>
+                </tr>
+                `;
+      }
+
+      tbody.innerHTML = _tr;
+    }
+
+  }
+
+  var dataDocument = new FileService();
+  dataDocument.showFileToDocuments();
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (renderDocuments);
+
+/***/ }),
+
 /***/ "./src/scripts/components/_grid.ts":
 /*!*****************************************!*\
   !*** ./src/scripts/components/_grid.ts ***!
@@ -113,10 +176,13 @@ const renderGrid = () => {// TODO: implement code to Render grid
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utilities_helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utilities/_helper */ "./src/scripts/utilities/_helper.ts");
 /* harmony import */ var _components_grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/_grid */ "./src/scripts/components/_grid.ts");
+/* harmony import */ var _components_documents__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/_documents */ "./src/scripts/components/_documents.ts");
+
 
 
 Object(_utilities_helper__WEBPACK_IMPORTED_MODULE_0__["default"])(() => {
   Object(_components_grid__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  Object(_components_documents__WEBPACK_IMPORTED_MODULE_2__["default"])();
 });
 
 /***/ }),
