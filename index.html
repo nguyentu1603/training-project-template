@@ -1,119 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="Nguyen Tu" />
+    <link href="./dist/css/home-page.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Assignment 1</title>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="" />
-  <meta name="author" content="Nguyen Tu" />
-  <link href="./dist/css/home-page.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <title>Assignment 1</title>
-</head>
-
-<body>
-  <nav class="documents-navbar">
-    <input class="menu-btn" type="checkbox" id="menu-btn" />
-    <label class="menu-icon" for="menu-btn"><i class="fa fa-bars"></i></label>
-    <ul class="menu">
-      <li>
-        <a data-bs-toggle="modal" data-bs-target="#form"> <i class="fa fa-plus nav-icon"></i>
-          Open <i class="fa fa-angle-down"></i>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-upload nav-icon"></i>
-          Upload
-          <i class="fa fa-angle-down"></i>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-refresh nav-icon"></i>
-          Sync
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="file-icon fa fa-file-excel-o"></i>
-          Export to Excel
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-link nav-icon"></i>
-          Flow
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-ellipsis-h"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <section class="documents-container">
-    <h1 class="documents-header">Documents</h1>
-    <div class="table-documents">
-      <table class="documents-table" id="documents">
-        <thead class="documents-table-head">
-          <tr>
-            <th class="file">
-              <i class="fa fa-file-o"></i>
-            </th>
-            <th>Name <i class="fa fa-angle-down"></i></th>
-            <th>Modified <i class="fa fa-angle-down"></i></th>
-            <th>Modified by <i class="fa fa-angle-down"></i></th>
-            <th>
-              <i class="fa fa-plus"></i>
-              Add column
-            </th>
-          </tr>
-        </thead>
-        <tbody class="documents-table-body" id="dataDocuments">
-          <tr>
-            <td><i class="file-icon fa fa-folder"></i></td>
-            <td>CAS</td>
-            <td>April 30</td>
-            <td>Megan Owen</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="file-icon fa fa-file-excel-o"></i>
-            </td>
-            <td><i class="fa fa-yelp new-item"></i>CoastedAndBargeLoading.xlsx</td>
-            <td>A few second ago</td>
-            <td>Administrator MOD</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="file-icon fa fa-file-excel-o"></i>
-            </td>
-            <td><i class="fa fa-yelp new-item"></i>RevenueByServices.xlsx</td>
-            <td>A few second ago</td>
-            <td>Administrator MOD</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="file-icon fa fa-file-excel-o"></i>
-            </td>
-            <td><i class="fa fa-yelp new-item"></i>RevenueByServices2016.xlsx</td>
-            <td>A few second ago</td>
-            <td>Administrator MOD</td>
-          </tr>
-          <tr>
-            <td>
-              <i class="file-icon fa fa-file-excel-o"></i>
-            </td>
-            <td><i class="fa fa-yelp new-item"></i>RevenueByServices2017.xlsx</td>
-            <td>A few second ago</td>
-            <td>Administrator MOD</td>
-          </tr>
-        </tbody>
-      </table>
+  <body>
+    <div class="loading-screen">
+      <img src="./dist/assets/Loading_icon.gif" alt="Loading"/>
     </div>
-  </section>
-  <script src="./dist/js/home-page.js"></script>
-</body>
+    <nav class="documents-navbar">
+      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn"
+        ><i class="fa fa-bars"></i
+      ></label>
+      <ul class="menu">
+        <li>
+          <a data-bs-toggle="modal" data-bs-target="#form">
+            <i class="fa fa-plus nav-icon"></i> New
+            <i class="fa fa-angle-down"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-upload nav-icon"></i>
+            Upload
+            <i class="fa fa-angle-down"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-refresh nav-icon"></i>
+            Sync
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="file-icon fa fa-file-excel-o"></i>
+            Export to Excel
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-link nav-icon"></i>
+            Flow
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-ellipsis-h"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <section class="documents-container">
+      <h1 class="documents-header">Documents</h1>
+      <div class="table-documents">
+        <table class="documents-table" id="documents">
+          <thead class="documents-table-head">
+            <tr>
+              <th class="file">
+                <i class="fa fa-file-o"></i>
+              </th>
+              <th>Name <i class="fa fa-angle-down"></i></th>
+              <th>Modified <i class="fa fa-angle-down"></i></th>
+              <th>Modified by <i class="fa fa-angle-down"></i></th>
+              <th>
+                <i class="fa fa-plus"></i>
+                Add column
+              </th>
+            </tr>
+          </thead>
+          <tbody class="documents-table-body" id="data-file">
+            <tr>
+              <td><i class="file-icon fa fa-folder"></i></td>
+              <td>CAS</td>
+              <td>April 30</td>
+              <td>Megan Owen</td>
+            </tr>
+            <tr>
+              <td>
+                <i class="file-icon fa fa-file-excel-o"></i>
+              </td>
+              <td>
+                <i class="fa fa-yelp new-item"></i
+                >CoastedAndBargeLoading.xlsx
+              </td>
+              <td>A few second ago</td>
+              <td>Administrator MOD</td>
+            </tr>
+            <tr>
+              <td>
+                <i class="file-icon fa fa-file-excel-o"></i>
+              </td>
+              <td>
+                <i class="fa fa-yelp new-item"></i
+                >RevenueByServices.xlsx
+              </td>
+              <td>A few second ago</td>
+              <td>Administrator MOD</td>
+            </tr>
+            <tr>
+              <td>
+                <i class="file-icon fa fa-file-excel-o"></i>
+              </td>
+              <td>
+                <i class="fa fa-yelp new-item"></i
+                >RevenueByServices2016.xlsx
+              </td>
+              <td>A few second ago</td>
+              <td>Administrator MOD</td>
+            </tr>
+            <tr>
+              <td>
+                <i class="file-icon fa fa-file-excel-o"></i>
+              </td>
+              <td>
+                <i class="fa fa-yelp new-item"></i
+                >RevenueByServices2017.xlsx
+              </td>
+              <td>A few second ago</td>
+              <td>Administrator MOD</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- test functions -->
+    <main>
+      <section id="name">
+        <input
+          id="file_name"
+          type="text"
+          name="File Name"
+          placeholder="File Name"
+        />
+      </section>
+      <div class="save-wrapper">
+        <a><img src="./assets/save.svg" alt="save icon"/></a>
+      </div>
+    </main>
+
+    <script src="./dist/js/home-page.js"></script>
+  </body>
 </html>

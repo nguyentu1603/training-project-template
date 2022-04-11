@@ -96,53 +96,111 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 const renderDocuments = () => {
-  class FileService {
+  class Documents {
     constructor() {
-      this.dataFile = this.setData();
+      this.items = this.mockupData();
     }
 
-    setData() {
-      return [{
-        id: 1,
-        name: "RevenueByServices.xlsx",
-        type: "",
-        createdAt: "A few second ago",
-        modifiedAt: "A few second ago",
-        modifiedBy: "Nguyễn Tú"
-      }, {
-        id: 2,
-        name: "RevenueByServices.xlsx",
-        type: "",
-        createdAt: "A few second ago",
-        modifiedAt: "A few second ago",
-        modifiedBy: "Nguyễn Tú"
-      }];
-    }
+    mockupData() {
+      let dataInStorage = localStorage.getItem('Documents');
 
-    showFileToDocuments() {
-      let tbody = document.getElementById('dataDocuments');
-      let _tr = '';
-
-      for (const obj of this.dataFile) {
-        _tr += `
-                <tr>
-                    <td>
-                    <i class="file-icon fa fa-file-excel-o"></i>
-                    </td>
-                    <td><i class="fa fa-yelp new-item"></i>${obj.name}</td>
-                    <td>${obj.createdAt}</td>
-                    <td>${obj.modifiedBy}</td>
-                </tr>
-                `;
+      if (dataInStorage) {
+        return JSON.parse(dataInStorage);
+      } else {
+        return [];
       }
-
-      tbody.innerHTML = _tr;
     }
 
+  } // Dummy data for Documents
+
+
+  const documents = new Documents();
+
+  function iconExtension(extension) {
+    if (extension.includes("doc")) {
+      return `<i class="file-icon fa fa-file-text-o"></i>`;
+    } else if (extension.includes("xlsx")) {
+      return `<i class="file-icon fa fa-file-excel-o"></i>`;
+    } else {
+      return `<i class="file-icon fa fa-folder"></i>`;
+    }
   }
 
-  var dataDocument = new FileService();
-  dataDocument.showFileToDocuments();
+  function validateInput() {
+    const fileName = document.getElementById("file_name").value;
+
+    if (fileName === "") {
+      alert("Please input file name");
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function showSaveScreen() {
+    //Check that data exists. Cancels save and alerts;
+    if (validateInput() === false) return; //Add File to LocalStorage
+
+    addFile(); //Show loading that File was saved
+
+    const element = document.querySelector(".loading-screen");
+    if (element != null) element.style.visibility = "visible"; //Then redirect to home page
+
+    setTimeout(() => window.location.replace("index.html"), 2300);
+  } // Render Documents
+
+
+  const renderDocuments = () => {
+    const tbody = document.getElementById('data-file');
+    let body = '';
+
+    for (var item of documents.items) {
+      body += `<tr>
+                <td>
+                    ${iconExtension(item.name)}
+                </td>
+                <td><i class="fa fa-yelp new-item"></i>${item.name}</td>
+                <td>${item.createdAt}</td>
+                <td>${item.modifiedBy}</td>
+            </tr>`;
+    }
+
+    tbody.innerHTML = body;
+  };
+
+  console.log(JSON.parse(localStorage.getItem('Documents')));
+
+  var _saveButton, _deteletButton;
+
+  (_saveButton = document.querySelector(".save-wrapper")) === null || _saveButton === void 0 ? void 0 : _saveButton.addEventListener("click", () => showSaveScreen());
+
+  function addFile() {
+    const fileName = document.getElementById("file_name").value;
+    const [file, extension] = fileName.split('.');
+    let newFile = {
+      id: Date.now(),
+      name: fileName,
+      extension: extension,
+      createdAt: new Date().toLocaleString(),
+      createdBy: "Nguyễn Tú",
+      modifiedAt: new Date().toLocaleString(),
+      modifiedBy: "Nguyễn Tú"
+    };
+
+    if (localStorage.getItem("Documents") === null) {
+      localStorage.setItem("Documents", JSON.stringify([newFile]));
+      return;
+    }
+
+    documents.items = JSON.parse(localStorage.getItem("Documents"));
+    documents.items.push(newFile);
+    localStorage.clear();
+    localStorage.setItem("Documents", JSON.stringify(documents.items));
+    renderDocuments();
+  } // Handle Documents
+
+
+  renderDocuments();
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (renderDocuments);
@@ -158,8 +216,7 @@ const renderDocuments = () => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const renderGrid = () => {// TODO: implement code to Render grid
-};
+const renderGrid = () => {};
 
 /* harmony default export */ __webpack_exports__["default"] = (renderGrid);
 
