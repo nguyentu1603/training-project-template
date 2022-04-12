@@ -3,6 +3,10 @@
   @include nav-bg-color;
   overflow: hidden;
 
+  [id^=drop] {
+    display: none;
+  }
+
   ul {
     @include nav-bg-color;
     margin: 0;

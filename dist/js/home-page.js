@@ -135,7 +135,8 @@ const renderDocuments = () => {
   }
 
   document.querySelector("#btn-save").addEventListener("click", () => addFile());
-  document.querySelector("#btn-upload").addEventListener("click", () => uploadFile()); // Loading 
+  document.querySelector("#btn-upload").addEventListener("click", () => uploadFile());
+  document.querySelector("#btn-save-folder").addEventListener("click", () => addFolder()); // Loading 
 
   function showLoadingScreen() {
     const element = document.querySelector(".loading-screen");
@@ -223,12 +224,20 @@ const renderDocuments = () => {
   function showEditForm(item) {
     const file = item;
     console.log(item);
-    const fileName = document.getElementById("file");
-    fileName.value = file.name;
-    const modifiedAt = document.getElementById("modifiedAt");
-    modifiedAt.value = file.modifiedAt;
-    const modifiedBy = document.getElementById("modifiedBy");
-    modifiedBy.value = file.modifiedBy;
+    const fileDetail = document.getElementById("update-file");
+    const renderFile = `
+            <section id="name">
+              <label>File:</label>
+              <input id="file" type="text" value="${file.name}" name="File Name" placeholder="Please Enter File Name" required />
+              <label>Created At:</label>
+              <input id="createdAt" value="${file.createdAt}" type="text" disabled />
+              <label>Modified At:</label>
+              <input id="modifiedAt" value="${file.modifiedAt}" type="text" disabled />
+              <label>Modified By:</label>
+              <input id="modifiedBy" value="${file.modifiedBy}" type="text" disabled />
+            </section>
+        `;
+    fileDetail.innerHTML = renderFile;
     document.querySelector("#btn-update").addEventListener("click", () => showUpdateScreen(file));
   }
 
@@ -268,6 +277,32 @@ const renderDocuments = () => {
       localStorage.setItem("Documents", JSON.stringify(documents.items));
     }
 
+    renderDocuments();
+    showLoadingScreen();
+  }
+
+  function addFolder() {
+    const fileName = document.getElementById("folder_name").value;
+    let newFolder = {
+      id: randomNumberID(),
+      name: fileName,
+      createdAt: new Date().toLocaleString(),
+      createdBy: "Nguyễn Tú",
+      modifiedAt: new Date().toLocaleString(),
+      modifiedBy: "Nguyễn Tú",
+      files: [],
+      subFolders: []
+    };
+
+    if (localStorage.getItem("Documents") === null) {
+      localStorage.setItem("Documents", JSON.stringify([newFolder]));
+      return;
+    }
+
+    documents.items = JSON.parse(localStorage.getItem("Documents"));
+    documents.items.push(newFolder);
+    localStorage.clear();
+    localStorage.setItem("Documents", JSON.stringify(documents.items));
     renderDocuments();
     showLoadingScreen();
   }

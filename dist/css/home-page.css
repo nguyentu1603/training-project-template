@@ -224,6 +224,9 @@ button {
   background-color: #E7E9EB;
   overflow: hidden;
 }
+.documents-navbar [id^=drop] {
+  display: none;
+}
 .documents-navbar ul {
   background-color: #E7E9EB;
   margin: 0;
@@ -485,6 +488,15 @@ tr {
   box-sizing: border-box;
 }
 .popup .content input[type=file] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.popup .content input[type=datetime-local] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
