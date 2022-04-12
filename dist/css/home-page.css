@@ -148,6 +148,78 @@ h2 {
   font-weight: 300;
 }
 
+button {
+  font-family: "Mulish", sans-serif;
+}
+
+.button {
+  border: none;
+  color: black;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.button.btn-edit {
+  background-color: #259aa7;
+  border: 2px solid #259aa7;
+  color: #F7F7F7;
+}
+.button.btn-edit:hover {
+  background-color: #F7F7F7;
+  color: #00092C;
+}
+.button.btn-delete {
+  background-color: #f43f31;
+  border: 2px solid #f43f31;
+  color: #F7F7F7;
+}
+.button.btn-delete:hover {
+  background-color: #F7F7F7;
+  color: #00092C;
+}
+.button.btn-save {
+  background-color: #34b115;
+  border: 2px solid #34b115;
+  color: #F7F7F7;
+  float: right;
+}
+.button.btn-save:hover {
+  background-color: #F7F7F7;
+  color: #00092C;
+}
+.button.btn-save:disabled {
+  background-color: #D1D1D1;
+  color: #00092C;
+  cursor: not-allowed;
+}
+.button.btn-update {
+  background-color: #e7c478;
+  border: 2px solid #e7c478;
+  color: #F7F7F7;
+  float: right;
+}
+.button.btn-update:hover {
+  background-color: #F7F7F7;
+  color: #00092C;
+}
+.button.btn-update:disabled {
+  background-color: #D1D1D1;
+  color: #00092C;
+  cursor: not-allowed;
+}
+.button a {
+  color: white;
+}
+.button a:hover {
+  color: #00092C;
+}
+
 .documents-navbar {
   background-color: #E7E9EB;
   overflow: hidden;
@@ -353,6 +425,82 @@ tr {
   .documents-container .documents-table-body td:nth-child(1) {
     justify-content: flex-end;
     padding: 15px;
+  }
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 40%;
+  position: relative;
+}
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #34b115;
+}
+.popup .content {
+  overflow: auto;
+  padding: 20px;
+  max-height: 200px;
+}
+.popup .content input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.popup .content input[type=file] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 700px) {
+  .box {
+    width: 70%;
+  }
+
+  .popup {
+    width: 70%;
   }
 }
 

@@ -111,10 +111,18 @@ const renderDocuments = () => {
       }
     }
 
-  } // Dummy data for Documents
-
+  }
 
   const documents = new Documents();
+
+  function getExtension(fileName) {
+    const [file, extension] = fileName.split('.');
+    return extension;
+  }
+
+  function randomNumberID() {
+    return Math.floor(Math.random() * (1000002 - 1 + 1)) + 1;
+  }
 
   function iconExtension(extension) {
     if (extension.includes("doc")) {
@@ -126,61 +134,54 @@ const renderDocuments = () => {
     }
   }
 
-  function validateInput() {
-    const fileName = document.getElementById("file_name").value;
+  document.querySelector("#btn-save").addEventListener("click", () => addFile());
+  document.querySelector("#btn-upload").addEventListener("click", () => uploadFile()); // Loading 
 
-    if (fileName === "") {
-      alert("Please input file name");
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  function showSaveScreen() {
-    //Check that data exists. Cancels save and alerts;
-    if (validateInput() === false) return; //Add File to LocalStorage
-
-    addFile(); //Show loading that File was saved
-
+  function showLoadingScreen() {
     const element = document.querySelector(".loading-screen");
     if (element != null) element.style.visibility = "visible"; //Then redirect to home page
 
     setTimeout(() => window.location.replace("index.html"), 2300);
-  } // Render Documents
+  }
 
+  ; // Render Documents
 
   const renderDocuments = () => {
     const tbody = document.getElementById('data-file');
-    let body = '';
+    documents.items.forEach(item => {
+      const tr = document.createElement("tr");
+      const iconItem = document.createElement("td");
+      iconItem.innerHTML = iconExtension(item.name);
+      const fileName = document.createElement("td");
+      fileName.innerText = item.name;
+      const modifiedAt = document.createElement("td");
+      modifiedAt.innerText = item.modifiedAt;
+      const modifiedBy = document.createElement("td");
+      modifiedBy.innerText = item.modifiedBy;
+      tr.append(iconItem, fileName, modifiedAt, modifiedBy);
+      const editButton = document.createElement("a");
+      editButton.className = "button btn-edit";
+      editButton.innerText = "Edit";
+      editButton.setAttribute("href", "#updateFile");
+      editButton.addEventListener("click", () => showEditForm(item));
+      const deleteButton = document.createElement("a");
+      deleteButton.className = "button btn-delete";
+      deleteButton.innerText = "Delete";
+      deleteButton.addEventListener("click", () => deleteFile(item.id));
+      tr.append(editButton, deleteButton);
+      tbody.append(tr);
+    });
+  }; // Handle Documents
 
-    for (var item of documents.items) {
-      body += `<tr>
-                <td>
-                    ${iconExtension(item.name)}
-                </td>
-                <td><i class="fa fa-yelp new-item"></i>${item.name}</td>
-                <td>${item.createdAt}</td>
-                <td>${item.modifiedBy}</td>
-            </tr>`;
-    }
 
-    tbody.innerHTML = body;
-  };
-
-  console.log(JSON.parse(localStorage.getItem('Documents')));
-
-  var _saveButton, _deteletButton;
-
-  (_saveButton = document.querySelector(".save-wrapper")) === null || _saveButton === void 0 ? void 0 : _saveButton.addEventListener("click", () => showSaveScreen());
+  renderDocuments();
 
   function addFile() {
     const fileName = document.getElementById("file_name").value;
-    const [file, extension] = fileName.split('.');
     let newFile = {
-      id: Date.now(),
+      id: randomNumberID(),
       name: fileName,
-      extension: extension,
+      extension: getExtension(fileName),
       createdAt: new Date().toLocaleString(),
       createdBy: "Nguyễn Tú",
       modifiedAt: new Date().toLocaleString(),
@@ -197,10 +198,79 @@ const renderDocuments = () => {
     localStorage.clear();
     localStorage.setItem("Documents", JSON.stringify(documents.items));
     renderDocuments();
-  } // Handle Documents
+    showLoadingScreen();
+  } // Delete File
 
 
-  renderDocuments();
+  function deleteFile(id) {
+    //Remove the deleted file by id
+    const filtered = documents.items.filter(item => item.id != id); //Set new data to LocalStorage
+
+    localStorage.setItem("Documents", JSON.stringify(filtered)); // Re-render Data
+
+    renderDocuments(); // Show Loading
+
+    showLoadingScreen();
+  }
+
+  function showUpdateScreen(file) {
+    //Update File to LocalStorage
+    updateFile(file); //Show loading that File was saved
+
+    showLoadingScreen();
+  }
+
+  function showEditForm(item) {
+    const file = item;
+    console.log(item);
+    const fileName = document.getElementById("file");
+    fileName.value = file.name;
+    const modifiedAt = document.getElementById("modifiedAt");
+    modifiedAt.value = file.modifiedAt;
+    const modifiedBy = document.getElementById("modifiedBy");
+    modifiedBy.value = file.modifiedBy;
+    document.querySelector("#btn-update").addEventListener("click", () => showUpdateScreen(file));
+  }
+
+  function updateFile(item) {
+    const file = item;
+    const index = documents.items.findIndex(x => x.id === file.id);
+    var form = document.getElementById("update-file");
+    documents.items[index].name = form.file.value;
+    documents.items[index].modifiedAt = new Date().toLocaleString();
+    console.log(form.file.value);
+    localStorage.setItem("Documents", JSON.stringify(documents.items));
+  }
+
+  function uploadFile() {
+    const input = document.getElementById('upload-file');
+    const files = input.files;
+
+    for (var item of files) {
+      let newFile = {
+        id: randomNumberID(),
+        name: item.name,
+        extension: getExtension(item.name),
+        createdAt: new Date().toLocaleString(),
+        createdBy: "Nguyễn Tú",
+        modifiedAt: new Date().toLocaleString(),
+        modifiedBy: "Nguyễn Tú"
+      };
+
+      if (localStorage.getItem("Documents") === null) {
+        localStorage.setItem("Documents", JSON.stringify([newFile]));
+        return;
+      }
+
+      documents.items = JSON.parse(localStorage.getItem("Documents"));
+      documents.items.push(newFile);
+      localStorage.clear();
+      localStorage.setItem("Documents", JSON.stringify(documents.items));
+    }
+
+    renderDocuments();
+    showLoadingScreen();
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (renderDocuments);

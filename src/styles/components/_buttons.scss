@@ -1,1 +1,81 @@
 // Button Styles
+.button {
+    border: none;
+    color: black;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &.btn-edit {
+        background-color: $color-blue;
+        border: 2px solid $color-blue;
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-white;
+            color: $color-black;
+        }
+    }
+
+    &.btn-delete {
+        background-color: $color-red;
+        border: 2px solid $color-red;
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-white;
+            color: $color-black;
+        }
+    }
+
+    &.btn-save {
+        background-color: $color-green;
+        border: 2px solid $color-green;
+        color: $color-white;
+        float: right;
+
+        &:hover {
+            background-color: $color-white;
+            color: $color-black;
+        }
+
+        &:disabled {
+            background-color: $color-grey;
+            color: $color-black;
+            cursor: not-allowed;
+        }
+    }
+
+
+    &.btn-update {
+        background-color: $color-yellow;
+        border: 2px solid $color-yellow;
+        color: $color-white;
+        float: right;
+
+        &:hover {
+            background-color: $color-white;
+            color: $color-black;
+        }
+
+        &:disabled {
+            background-color: $color-grey;
+            color: $color-black;
+            cursor: not-allowed;
+        }
+    }
+
+    a {
+        color: white;
+
+        &:hover {
+            color: $color-black;
+        }
+    }
+}
