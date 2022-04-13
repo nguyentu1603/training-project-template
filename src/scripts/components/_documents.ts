@@ -49,7 +49,7 @@ const renderDocuments = () => {
     }
 
     const randomNumberID = () => {
-        return Math.floor(Math.random() * (1000002 - 1 + 1)) + 1;
+        return Math.floor(Math.random() * (1000000 - 1 + 1)) + 1;
     }
 
     const iconExtension = (extension: string) => {
@@ -66,11 +66,11 @@ const renderDocuments = () => {
     document.querySelector("#btn-upload")!.addEventListener("click", () => uploadFile());
     document.querySelector("#btn-save-folder")!.addEventListener("click", () => addFolder());
 
-    // Loading 
+    // Loading Screen
     const showLoadingScreen = () => {
         const element: HTMLElement | null = document.querySelector(".loading-screen");
         if (element != null) element.style.visibility = "visible";
-        //Then redirect to home page
+        //Then reload page
         setTimeout(
             () =>
                 window.location.replace(
@@ -84,6 +84,8 @@ const renderDocuments = () => {
     const renderDocuments = () => {
         const tbody: any = document.getElementById('data-file');
         documents.items.forEach(item => {
+
+            // build tbody data
             const tr = document.createElement("tr");
             const iconItem = document.createElement("td");
             iconItem.innerHTML = iconExtension(item.name);
@@ -95,6 +97,7 @@ const renderDocuments = () => {
             modifiedBy.innerText = item.modifiedBy;
             tr.append(iconItem, fileName, modifiedAt, modifiedBy);
 
+            // create button edit / delete
             const editButton = document.createElement("a");
             editButton.className = "button btn-edit";
             editButton.innerText = "Edit"
@@ -110,10 +113,11 @@ const renderDocuments = () => {
             tbody.append(tr);
         })
     };
-    
-    // Handle Documents
+
+    // Documents List
     renderDocuments();
 
+    // Add File
     const addFile = () => {
         const fileName = (
             document.getElementById("file_name") as HTMLInputElement
@@ -127,12 +131,18 @@ const renderDocuments = () => {
             modifiedAt: new Date().toLocaleString(),
             modifiedBy: "Nguyễn Tú",
         };
-        documents.addItem(newFile);
+        if (fileName === "") {
+            alert("Please Input File Name")
+        } else {
+            documents.addItem(newFile);
+        }
     }
 
     // Delete File
     const deleteFile = (id: number) => {
-        documents.deleteItem(id);
+        if(confirm("Do you want to delete this file ?") == true){
+            documents.deleteItem(id);
+        }
     }
 
     // Edit File
@@ -150,7 +160,7 @@ const renderDocuments = () => {
               <label>Modified By:</label>
               <input id="modifiedBy" value="${item.modifiedBy}" type="text" disabled />
             </section>
-             `;
+            `;
         fileDetail.innerHTML = renderFile;
         document.querySelector("#btn-update")!.addEventListener("click", () => showUpdateScreen(item));
     }
@@ -162,6 +172,7 @@ const renderDocuments = () => {
         showLoadingScreen()
     }
 
+    // Update File
     const updateFile = (item: any) => {
         const index = documents.items.findIndex(x => x.id === item.id);
         var form: any = document.getElementById("update-file");
@@ -203,7 +214,11 @@ const renderDocuments = () => {
             files: [],
             subFolders: []
         };
-        documents.addItem(newFolder);
+        if (folderName === "") {
+            alert("Please Input Folder Name")
+        } else {
+            documents.addItem(newFolder);
+        }
     }
 }
 
