@@ -1,4 +1,3 @@
-import { findKey } from "lodash";
 import { File } from "../models/_file.interface";
 import { Folder } from "../models/_folder.interface";
 
@@ -17,20 +16,43 @@ const renderDocuments = () => {
                 return [];
             }
         }
+
+        addItem = (newItem: File | Folder) => {
+            if (localStorage.getItem("Documents") === null) {
+                localStorage.setItem("Documents", JSON.stringify([newItem]));
+                return;
+            }
+            documents.items = JSON.parse(localStorage.getItem("Documents") as string);
+            documents.items.push(newItem);
+            localStorage.clear();
+            localStorage.setItem("Documents", JSON.stringify(documents.items));
+            renderDocuments();
+            showLoadingScreen();
+        }
+
+        deleteItem = (id: number) => {
+            const filtered = documents.items.filter(
+                (item: { id: number | undefined }) => item.id != id
+            );
+            //Set new data to LocalStorage
+            localStorage.setItem("Documents", JSON.stringify(filtered));
+            renderDocuments();
+            showLoadingScreen();
+        }
     }
 
     const documents = new Documents();
 
-    function getExtension(fileName: string) {
+    const getExtension = (fileName: string) => {
         const [file, extension] = fileName.split('.');
         return extension;
     }
 
-    function randomNumberID() {
+    const randomNumberID = () => {
         return Math.floor(Math.random() * (1000002 - 1 + 1)) + 1;
     }
 
-    function iconExtension(extension: string) {
+    const iconExtension = (extension: string) => {
         if (extension.includes("doc")) {
             return `<i class="file-icon fa fa-file-text-o"></i>`;
         } else if (extension.includes("xlsx")) {
@@ -45,10 +67,9 @@ const renderDocuments = () => {
     document.querySelector("#btn-save-folder")!.addEventListener("click", () => addFolder());
 
     // Loading 
-    function showLoadingScreen() {
+    const showLoadingScreen = () => {
         const element: HTMLElement | null = document.querySelector(".loading-screen");
         if (element != null) element.style.visibility = "visible";
-
         //Then redirect to home page
         setTimeout(
             () =>
@@ -79,7 +100,7 @@ const renderDocuments = () => {
             editButton.innerText = "Edit"
             editButton.setAttribute("href", "#updateFile");
             editButton.addEventListener("click", () => showEditForm(item))
-            
+
             const deleteButton = document.createElement("a");
             deleteButton.className = "button btn-delete";
             deleteButton.innerText = "Delete";
@@ -89,10 +110,11 @@ const renderDocuments = () => {
             tbody.append(tr);
         })
     };
+    
     // Handle Documents
     renderDocuments();
 
-    function addFile() {
+    const addFile = () => {
         const fileName = (
             document.getElementById("file_name") as HTMLInputElement
         ).value;
@@ -105,72 +127,51 @@ const renderDocuments = () => {
             modifiedAt: new Date().toLocaleString(),
             modifiedBy: "Nguyễn Tú",
         };
-        if (localStorage.getItem("Documents") === null) {
-            localStorage.setItem("Documents", JSON.stringify([newFile]));
-            return;
-        }
-        documents.items = JSON.parse(localStorage.getItem("Documents") as string);
-        documents.items.push(newFile);
-        localStorage.clear();
-        localStorage.setItem("Documents", JSON.stringify(documents.items));
-        renderDocuments();
-        showLoadingScreen()
+        documents.addItem(newFile);
     }
 
     // Delete File
-    function deleteFile(id: number) {
-        //Remove the deleted file by id
-        const filtered = documents.items.filter(
-            (item: { id: number | undefined }) => item.id != id
-        );
-        //Set new data to LocalStorage
-        localStorage.setItem("Documents", JSON.stringify(filtered));
-        // Re-render Data
-        renderDocuments();
-
-        // Show Loading
-        showLoadingScreen();
+    const deleteFile = (id: number) => {
+        documents.deleteItem(id);
     }
 
-    function showUpdateScreen(file: any) {
+    // Edit File
+    const showEditForm = (item: any) => {
+        const fileDetail: any = document.getElementById("update-file");
+        const renderFile =
+            `
+            <section id="name">
+              <label>File:</label>
+              <input id="file" type="text" value="${item.name}" name="File Name" placeholder="Please Enter File Name" required />
+              <label>Created At:</label>
+              <input id="createdAt" value="${item.createdAt}" type="text" disabled />
+              <label>Modified At:</label>
+              <input id="modifiedAt" value="${item.modifiedAt}" type="text" disabled />
+              <label>Modified By:</label>
+              <input id="modifiedBy" value="${item.modifiedBy}" type="text" disabled />
+            </section>
+             `;
+        fileDetail.innerHTML = renderFile;
+        document.querySelector("#btn-update")!.addEventListener("click", () => showUpdateScreen(item));
+    }
+
+    const showUpdateScreen = (file: any) => {
         //Update File to LocalStorage
         updateFile(file);
         //Show loading that File was saved
         showLoadingScreen()
     }
 
-    function showEditForm(item: any) {
-        const file: File = item;
-        console.log(item);
-        const fileDetail: any = document.getElementById("update-file");
-        const renderFile =
-            `
-            <section id="name">
-              <label>File:</label>
-              <input id="file" type="text" value="${file.name}" name="File Name" placeholder="Please Enter File Name" required />
-              <label>Created At:</label>
-              <input id="createdAt" value="${file.createdAt}" type="text" disabled />
-              <label>Modified At:</label>
-              <input id="modifiedAt" value="${file.modifiedAt}" type="text" disabled />
-              <label>Modified By:</label>
-              <input id="modifiedBy" value="${file.modifiedBy}" type="text" disabled />
-            </section>
-        `;
-        fileDetail.innerHTML = renderFile;
-        document.querySelector("#btn-update")!.addEventListener("click", () => showUpdateScreen(file));
-    }
-
-    function updateFile(item: any) {
-        const file: File = item;
-        const index = documents.items.findIndex(x => x.id === file.id);
+    const updateFile = (item: any) => {
+        const index = documents.items.findIndex(x => x.id === item.id);
         var form: any = document.getElementById("update-file");
         documents.items[index].name = form.file.value;
         documents.items[index].modifiedAt = new Date().toLocaleString();
-        console.log(form.file.value);
         localStorage.setItem("Documents", JSON.stringify(documents.items));
     }
 
-    function uploadFile() {
+    // Upload Multiple File
+    const uploadFile = () => {
         const input: any = document.getElementById('upload-file') as HTMLInputElement | null;
         const files: any = input.files;
         for (var item of files) {
@@ -183,26 +184,18 @@ const renderDocuments = () => {
                 modifiedAt: new Date().toLocaleString(),
                 modifiedBy: "Nguyễn Tú",
             };
-            if (localStorage.getItem("Documents") === null) {
-                localStorage.setItem("Documents", JSON.stringify([newFile]));
-                return;
-            }
-            documents.items = JSON.parse(localStorage.getItem("Documents") as string);
-            documents.items.push(newFile);
-            localStorage.clear();
-            localStorage.setItem("Documents", JSON.stringify(documents.items));
+            documents.addItem(newFile);
         }
-        renderDocuments();
-        showLoadingScreen();
     }
 
-    function addFolder() {
-        const fileName = (
+    // Add Folder
+    const addFolder = () => {
+        const folderName = (
             document.getElementById("folder_name") as HTMLInputElement
         ).value;
         let newFolder: Folder = {
             id: randomNumberID(),
-            name: fileName,
+            name: folderName,
             createdAt: new Date().toLocaleString(),
             createdBy: "Nguyễn Tú",
             modifiedAt: new Date().toLocaleString(),
@@ -210,16 +203,7 @@ const renderDocuments = () => {
             files: [],
             subFolders: []
         };
-        if (localStorage.getItem("Documents") === null) {
-            localStorage.setItem("Documents", JSON.stringify([newFolder]));
-            return;
-        }
-        documents.items = JSON.parse(localStorage.getItem("Documents") as string);
-        documents.items.push(newFolder);
-        localStorage.clear();
-        localStorage.setItem("Documents", JSON.stringify(documents.items));
-        renderDocuments();
-        showLoadingScreen()
+        documents.addItem(newFolder);
     }
 }
 

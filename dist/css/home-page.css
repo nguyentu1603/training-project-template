@@ -224,9 +224,6 @@ button {
   background-color: #E7E9EB;
   overflow: hidden;
 }
-.documents-navbar [id^=drop] {
-  display: none;
-}
 .documents-navbar ul {
   background-color: #E7E9EB;
   margin: 0;
