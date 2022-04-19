@@ -255,7 +255,7 @@ const renderDocuments = () => {
 
   const updateFile = item => {
     const index = documents.items.findIndex(x => x.id === item.id);
-    var form = document.getElementById("update-file");
+    const form = document.getElementById("update-file");
     documents.items[index].name = form.file.value;
     documents.items[index].modifiedAt = new Date().toLocaleString();
     localStorage.setItem("Documents", JSON.stringify(documents.items));
@@ -266,7 +266,7 @@ const renderDocuments = () => {
     const input = document.getElementById('upload-file');
     const files = input.files;
 
-    for (var item of files) {
+    for (const item of files) {
       let newFile = {
         id: randomNumberID(),
         name: item.name,
