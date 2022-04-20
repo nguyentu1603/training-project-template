@@ -34,6 +34,17 @@
         }
     }
 
+    &.btn-details {
+        background-color: $color-blue;
+        border: 2px solid $color-blue;
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-white;
+            color: $color-black;
+        }
+    }
+
     &.btn-save {
         background-color: $color-green;
         border: 2px solid $color-green;

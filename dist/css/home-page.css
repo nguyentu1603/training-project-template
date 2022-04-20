@@ -183,6 +183,15 @@ button {
   background-color: #F7F7F7;
   color: #00092C;
 }
+.button.btn-details {
+  background-color: #259aa7;
+  border: 2px solid #259aa7;
+  color: #F7F7F7;
+}
+.button.btn-details:hover {
+  background-color: #F7F7F7;
+  color: #00092C;
+}
 .button.btn-save {
   background-color: #34b115;
   border: 2px solid #34b115;
@@ -284,11 +293,13 @@ button {
   }
   .documents-navbar .menu {
     clear: none;
-    float: left;
     max-height: none;
   }
   .documents-navbar .menu-icon {
     display: none;
+  }
+  .documents-navbar .user-info {
+    float: right;
   }
 }
 .documents-header {
@@ -445,7 +456,7 @@ tr {
 }
 
 .popup {
-  margin: 70px auto;
+  margin: 100px auto;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
@@ -473,7 +484,7 @@ tr {
 .popup .content {
   overflow: auto;
   padding: 20px;
-  max-height: 200px;
+  max-height: 400px;
 }
 .popup .content input[type=text] {
   width: 100%;
@@ -501,6 +512,9 @@ tr {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+.popup .content .footer-btn {
+  float: right;
 }
 
 @media screen and (max-width: 700px) {

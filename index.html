@@ -1,185 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="Nguyen Tu" />
-    <link href="./dist/css/home-page.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <title>Assignment 1</title>
-  </head>
 
-  <body>
-    <div class="loading-screen">
-      <img src="./dist/assets/Loading_icon.gif" alt="Loading" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="Nguyen Tu" />
+  <link href="./dist/css/home-page.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title>Assignment 1</title>
+</head>
+
+<body>
+  <div class="loading-screen">
+    <img src="./dist/assets/Loading_icon.gif" alt="Loading" />
+  </div>
+  <nav class="documents-navbar">
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><i class="fa fa-bars"></i></label>
+    <ul class="menu">
+      <li>
+        <a href="#addFile">
+          <i class="fa fa-file-o nav-icon"></i> New File
+          <i class="fa fa-angle-down"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#uploadFile">
+          <i class="fa fa-upload nav-icon"></i>
+          Upload
+          <i class="fa fa-angle-down"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-refresh nav-icon"></i>
+          Sync
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="file-icon fa fa-file-excel-o"></i>
+          Export to Excel
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-link nav-icon"></i>
+          Flow
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-ellipsis-h"></i>
+        </a>
+      </li>
+      <li class="user-info">
+        <ul>
+          <li>
+            <a class="navbar-text text-dark">Hello @User.Identity.Name!</a>
+          </li>
+          <li>
+            <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account"
+              asp-action="SignOut">Sign out</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <section class="documents-container">
+    <h1 class="documents-header">Documents</h1>
+    <div class="table-documents">
+      <table class="documents-table" id="documents">
+        <thead class="documents-table-head">
+          <tr>
+            <th class="file">
+              <i class="fa fa-file-o"></i>
+            </th>
+            <th>Name <i class="fa fa-angle-down"></i></th>
+            <th>Modified <i class="fa fa-angle-down"></i></th>
+            <th>Modified by <i class="fa fa-angle-down"></i></th>
+            <th>
+              <i class="fa fa-plus"></i>
+              Add column
+            </th>
+          </tr>
+        </thead>
+        <tbody class="documents-table-body" id="data-file">
+          <!-- render data -->
+        </tbody>
+      </table>
     </div>
-    <nav class="documents-navbar">
-      <input class="menu-btn" type="checkbox" id="menu-btn" />
-      <label class="menu-icon" for="menu-btn"
-        ><i class="fa fa-bars"></i
-      ></label>
-      <ul class="menu">
-        <li>
-          <a href="#addFile">
-            <i class="fa fa-file-o nav-icon"></i> New File
-            <i class="fa fa-angle-down"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#addFolder">
-            <i class="fa fa-folder nav-icon"></i> New Folder
-            <i class="fa fa-angle-down"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#uploadFile">
-            <i class="fa fa-upload nav-icon"></i>
-            Upload
-            <i class="fa fa-angle-down"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-refresh nav-icon"></i>
-            Sync
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="file-icon fa fa-file-excel-o"></i>
-            Export to Excel
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-link nav-icon"></i>
-            Flow
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-ellipsis-h"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <section class="documents-container">
-      <h1 class="documents-header">Documents</h1>
-      <div class="table-documents">
-        <table class="documents-table" id="documents">
-          <thead class="documents-table-head">
-            <tr>
-              <th class="file">
-                <i class="fa fa-file-o"></i>
-              </th>
-              <th>Name <i class="fa fa-angle-down"></i></th>
-              <th>Modified <i class="fa fa-angle-down"></i></th>
-              <th>Modified by <i class="fa fa-angle-down"></i></th>
-              <th>
-                <i class="fa fa-plus"></i>
-                Add column
-              </th>
-            </tr>
-          </thead>
-          <tbody class="documents-table-body" id="data-file">
-            <!-- render data -->
-          </tbody>
-        </table>
-      </div>
-    </section>
+  </section>
 
-    <!-- Add File -->
-    <div id="addFile" class="overlay">
-      <div class="popup">
-        <h2 class="header-file">File:</h2>
-        <a class="close" href="#">&times;</a>
-        <div class="content" id="form-file">
-          <main>
+  <!-- Add File -->
+  <div id="addFile" class="overlay">
+    <div class="popup">
+      <h2 class="header-file">File:</h2>
+      <a class="close" href="#">&times;</a>
+      <div class="content" id="form-file">
+        <main>
+          <section id="name">
+            <input id="file_name" type="text" name="File Name" placeholder="Please Enter File Name" />
+          </section>
+        </main>
+        <button class="button btn-save" id="btn-save">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update File -->
+  <div id="detailsFile" class="overlay">
+    <div class="popup">
+      <h2 class="header-file">File:</h2>
+      <a class="close" href="#">&times;</a>
+      <div class="content" id="form-file">
+        <main>
+          <form id="details-file">
+            <!-- Data goes here -->
+          </form>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input File -->
+  <div id="uploadFile" class="overlay">
+    <div class="popup">
+      <h2 class="header-file">Upload File:</h2>
+      <a class="close" href="#">&times;</a>
+      <div class="content" id="form-file">
+        <main>
+          <form id="update-file">
             <section id="name">
-              <input
-                id="file_name"
-                type="text"
-                name="File Name"
-                placeholder="Please Enter File Name"
-              />
+              <label>Upload File:</label>
+              <input type="file" id="upload-file" multiple /><br /><br />
             </section>
-          </main>
-          <button class="button btn-save" id="btn-save">Save</button>
-        </div>
+          </form>
+        </main>
+        <button class="button btn-save" id="btn-upload">
+          Upload
+        </button>
       </div>
     </div>
+  </div>
 
-    <!-- Update File -->
-    <div id="updateFile" class="overlay">
-      <div class="popup">
-        <h2 class="header-file">Update File:</h2>
-        <a class="close" href="#">&times;</a>
-        <div class="content" id="form-file">
-          <main>
-            <form id="update-file">
-              <!-- Data goes here -->
-            </form>
-          </main>
-          <button class="button btn-update" id="btn-update">
-            Update
-          </button>
-        </div>
+  <!-- Add Folder -->
+  <div id="addFolder" class="overlay">
+    <div class="popup">
+      <h2 class="header-file">Folder:</h2>
+      <a class="close" href="#">&times;</a>
+      <div class="content" id="form-folder">
+        <main>
+          <section id="name">
+            <input id="folder_name" type="text" name="Folder Name" placeholder="Please Enter Folder Name" />
+          </section>
+        </main>
+        <button class="button btn-save" id="btn-save-folder">Save</button>
       </div>
     </div>
-    
-    <!-- Input File -->
-    <div id="uploadFile" class="overlay">
-      <div class="popup">
-        <h2 class="header-file">Upload File:</h2>
-        <a class="close" href="#">&times;</a>
-        <div class="content" id="form-file">
-          <main>
-            <form id="update-file">
-              <section id="name">
-                <label>Upload File:</label>
-                <input
-                  type="file"
-                  id="upload-file"
-                  multiple
-                /><br /><br />
-              </section>
-            </form>
-          </main>
-          <button class="button btn-save" id="btn-upload">
-            Upload
-          </button>
-        </div>
-      </div>
-    </div>
+  </div>
 
-    <!-- Add Folder -->
-    <div id="addFolder" class="overlay">
-      <div class="popup">
-        <h2 class="header-file">Folder:</h2>
-        <a class="close" href="#">&times;</a>
-        <div class="content" id="form-folder">
-          <main>
-            <section id="name">
-              <input
-                id="folder_name"
-                type="text"
-                name="Folder Name"
-                placeholder="Please Enter Folder Name"
-              />
-            </section>
-          </main>
-          <button class="button btn-save" id="btn-save-folder">Save</button>
-        </div>
-      </div>
-    </div>
+  <script src="./dist/js/home-page.js"></script>
+</body>
 
-    <script src="./dist/js/home-page.js"></script>
-  </body>
 </html>

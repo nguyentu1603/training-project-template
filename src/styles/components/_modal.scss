@@ -16,7 +16,7 @@
 }
 
 .popup {
-    margin: 70px auto;
+    margin: 100px auto;
     padding: 20px;
     background: #fff;
     border-radius: 5px;
@@ -47,7 +47,7 @@
     .content {
         overflow: auto;
         padding: 20px;
-        max-height: 200px;
+        max-height: 400px;
 
         input[type=text] {
             width: 100%;
@@ -58,7 +58,7 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
-        
+
         input[type=file] {
             width: 100%;
             padding: 12px 20px;
@@ -77,6 +77,10 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+        }
+
+        .footer-btn {
+            float: right;
         }
     }
 }

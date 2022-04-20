@@ -69,6 +69,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "webpack-fix-style-only-entries": "^0.6.1"
   }
 }

@@ -2,6 +2,7 @@
 .documents-navbar {
   @include nav-bg-color;
   overflow: hidden;
+
   ul {
     @include nav-bg-color;
     margin: 0;
@@ -70,7 +71,6 @@
 
     .menu {
       clear: none;
-      float: left;
       max-height: none;
     }
 
@@ -78,5 +78,8 @@
       display: none;
     }
 
+    .user-info {
+      float: right;
+    }
   }
 }
