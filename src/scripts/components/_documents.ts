@@ -33,10 +33,6 @@ const renderDocuments = () => {
     return extension;
   };
 
-  const randomNumberID = () => {
-    return Math.floor(Math.random() * (1000000 - 1 + 1)) + 1;
-  };
-
   const iconExtension = (extension: string) => {
     if (extension.includes('doc') || extension.includes('txt')) {
       return `<i class="file-icon fa fa-file-text-o"></i>`;
@@ -81,7 +77,9 @@ const renderDocuments = () => {
           const fileName = document.createElement('td');
           fileName.innerText = item.name;
           const modifiedAt = document.createElement('td');
-          modifiedAt.innerText = item.modifiedAt;
+          modifiedAt.innerText = new Date(
+            item.modifiedAt,
+          ).toLocaleString();
           const modifiedBy = document.createElement('td');
           modifiedBy.innerText = item.modifiedBy;
           tr.append(iconItem, fileName, modifiedAt, modifiedBy);
@@ -178,6 +176,12 @@ const renderDocuments = () => {
     }
   };
 
+  const updateFile = (id: number, item: File) => {
+    const form: any = document.getElementById('details-file');
+    item.name = form.file.value;
+    console.log(item);
+  };
+
   //Show File Details
   const showDetails = (id: number) => {
     const fileDetails: any = document.getElementById('details-file');
@@ -188,17 +192,26 @@ const renderDocuments = () => {
         const renderFile = `
             <section id="name">
               <label>File:</label>
-              <input id="file" type="text" value="${res.data.name}" disabled />
+              <input id="file" type="text" value="${res.data.name}" />
               <label>Created At:</label>
-              <input id="createdAt" value="${res.data.createdAt}" type="text" disabled />
+              <input id="createdAt" value="${new Date(
+                res.data.createdAt,
+              ).toLocaleString()}" type="text" disabled />
               <label>Modified At:</label>
-              <input id="modifiedAt" value="${res.data.modifiedAt}" type="text" disabled />
+              <input id="modifiedAt" value="${new Date(
+                res.data.modifiedAt,
+              ).toLocaleString()}" type="text" disabled />
               <label>Modified By:</label>
-              <input id="modifiedBy" value="${res.data.modifiedBy}" type="text" disabled />
+              <input id="modifiedBy" value="${new Date(
+                res.data.modifiedBy,
+              ).toLocaleString()}" type="text" disabled />
             </section>
             <div class="footer-btn">
               <button class="button btn-delete" id="btn-delete">
                Delete
+              </button>
+              <button class="button btn-update" id="btn-update">
+                Update
               </button>
             </div>
             `;
@@ -206,6 +219,11 @@ const renderDocuments = () => {
         document
           .querySelector('#btn-delete')!
           .addEventListener('click', () => deleteFile(res.data.id));
+        document
+          .querySelector('#btn-update')!
+          .addEventListener('click', () =>
+            updateFile(res.data.id, res.data),
+          );
       })
       .catch(err => {
         console.log(err);
